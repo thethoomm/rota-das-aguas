@@ -1,4 +1,5 @@
 import Producer from "@/types/producer";
+import { router } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 interface ProducerCardProps {
@@ -6,8 +7,22 @@ interface ProducerCardProps {
 }
 
 export function ProducerCard({ producer }: ProducerCardProps) {
+  function navigateTo() {
+    return router.push({
+      pathname: "/(producer)/[producer]",
+      params: {
+        producer: JSON.stringify(producer),
+      },
+    });
+  }
+
   return (
-    <TouchableOpacity id="producer-card" className="ml-4" activeOpacity={0.7}>
+    <TouchableOpacity
+      id="producer-card"
+      className="ml-4"
+      activeOpacity={0.7}
+      onPress={navigateTo}
+    >
       <Image
         source={{
           uri: producer.image,
