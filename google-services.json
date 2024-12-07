@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "571405384198",
+    "project_id": "rota-das-aguas-e6fe2",
+    "storage_bucket": "rota-das-aguas-e6fe2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571405384198:android:52b620b5f2c6c0aad96187",
+        "android_client_info": {
+          "package_name": "com.thomhenriq.rotadasaguaslaitec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571405384198-n003rjq57jlf4a9j58q93a6qjqsnvu6q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thomhenriq.rotadasaguaslaitec",
+            "certificate_hash": "3df9d58bb4430684f6c5b6b105c6ab74006cea6f"
+          }
+        },
+        {
+          "client_id": "571405384198-6c0notgfeohctvbptdsggeibs1pqkno6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlMERlORxom4F85o1beUjFm2TtbgaNkM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571405384198-6c0notgfeohctvbptdsggeibs1pqkno6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

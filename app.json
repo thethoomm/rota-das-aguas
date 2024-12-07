@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Rota das Águas",
-    "slug": "rota-das-aguas",
+    "slug": "rota-das-aguas-laitec",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -9,13 +9,17 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.thomhenriq.rotadasaguaslaitec",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#E4DFC5"
-      }
+      },
+      "package": "com.thomhenriq.rotadasaguaslaitec",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",
@@ -32,10 +36,15 @@
           "resizeMode": "contain",
           "backgroundColor": "#E4DFC5"
         }
-      ]
-    ],
+      ],
+      "@react-native-firebase/app",    ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "54424dea-99e0-493f-882b-940c0578eb68"
+      }
     }
   }
 }
