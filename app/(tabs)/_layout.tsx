@@ -1,4 +1,4 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Feather } from "@expo/vector-icons";
 import colors from "@/styles/colors";
 import { Tabs } from "expo-router/tabs";
 
@@ -7,8 +7,13 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.blue[500],
+        tabBarHideOnKeyboard: true,
+        tabBarActiveTintColor: colors.black,
+        tabBarLabelStyle: {
+          fontSize: 16
+        },
         tabBarStyle: {
+          height: 60,
           elevation: 0,
           borderTopWidth: 0,
           backgroundColor: colors.white,
@@ -19,8 +24,26 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Início",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="home" color={color} size={28} />
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="routes"
+        options={{
+          title: "Rotas",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="map" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Perfil",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="user" color={color} size={size} />
           ),
         }}
       />

@@ -1,13 +1,12 @@
-type Producer = {
+type City = {
   id: string;
   name: string;
-  city: string;
   image: string;
-  categories: string[];
+  description: string;
   rating: {
     total: number;
     average: number;
   };
 };
 
-export default Producer;
+export default City;
