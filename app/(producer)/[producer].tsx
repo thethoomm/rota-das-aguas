@@ -1,6 +1,7 @@
 import {
   Image,
   ImageBackground,
+  Linking,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -36,6 +37,12 @@ export default function ProducerDetails() {
     return router.back();
   }
 
+  function openMap() {
+    Linking.openURL(producer?.location as string).catch((err) =>
+      console.error("Erro ao abrir o Google Maps", err)
+    );
+  }
+
   if (!producer) {
     return <Text>Sem produtor</Text>;
   }
@@ -47,6 +54,7 @@ export default function ProducerDetails() {
       content: producer.website,
     },
   ];
+  const hasAdditionalInfo = producer.website && additional.length > 0;
 
   return (
     <ScrollView
@@ -78,7 +86,10 @@ export default function ProducerDetails() {
             <Text className="text-2xl font-semibold w-[200] md:w-[400]">
               {producer.name}
             </Text>
-            <View id="rating" className="flex-row w-[80] md:w-[100] items-center gap-2">
+            <View
+              id="rating"
+              className="flex-row w-[80] md:w-[100] items-center gap-2"
+            >
               <FontAwesome name="star" size={16} color="#f59e0b" />
               <Text className="text-base text-gray-500">
                 {producer.rating.average} ({producer.rating.total})
@@ -87,7 +98,7 @@ export default function ProducerDetails() {
           </View>
           <View id="location" className="flex-row items-center gap-1">
             <Feather name="map-pin" size={14} color={colors.blue[500]} />
-            <Text className="text-base text-blue-500">
+            <Text className="text-base text-blue-500" onPress={openMap}>
               Ver localização no mapa
             </Text>
           </View>
@@ -95,7 +106,7 @@ export default function ProducerDetails() {
 
         <Separator />
 
-        {additional.length > 0 && (
+        {hasAdditionalInfo && additional.length > 0 && (
           <View id="additional" className="px-6 mb-4 gap-2">
             <Text className="text-xl font-semibold">
               Informações adicionais
@@ -134,31 +145,35 @@ export default function ProducerDetails() {
           </ScrollView>
         </View>
 
-        <View id="galery">
-          <View id="galery-text" className="px-6 mb-4">
-            <Text className="text-xl font-semibold">Galeria</Text>
-            <Text className="text-base text-gray-500">
-              Descubra como é a experiência na {producer.name}!{" "}
-            </Text>
+        {producer.photos && (
+          <View id="galery">
+            <View id="galery-text" className="px-6 mb-4">
+              <Text className="text-xl font-semibold">Galeria</Text>
+              <Text className="text-base text-gray-500">
+                Descubra como é a experiência na {producer.name}!{" "}
+              </Text>
+            </View>
+            <ScrollView
+              id="galery-list"
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              className="gap-2 mb-4"
+            >
+              {producer.photos.map((photo, index) => (
+                <Image
+                  key={index}
+                  source={{
+                    uri: photo,
+                  }}
+                  className="w-48 h-72 ml-6 rounded-lg object-contain"
+                />
+              ))}
+            </ScrollView>
           </View>
-          <ScrollView
-            id="galery-list"
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            className="gap-2 mb-4"
-          >
-            {producer.photos.map((photo, index) => (
-              <Image
-                key={index}
-                source={{
-                  uri: photo,
-                }}
-                className="w-48 h-72 ml-6 rounded-lg object-contain"
-              />
-            ))}
-          </ScrollView>
-        </View>
+        )}
       </View>
+
+      <View id="footer" className="h-16"></View>
     </ScrollView>
   );
 }

@@ -9,8 +9,9 @@ type Producer = {
     total: number;
     average: number;
   };
-  photos: string[];
-  website: string;
+  photos?: string[];
+  website?: string;
+  location: string
 };
 
 export default Producer;

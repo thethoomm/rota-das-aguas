@@ -36,7 +36,7 @@ export default function ProductDetails() {
   }
 
   return (
-    <ScrollView id="container">
+    <ScrollView id="container" className="flex-1 bg-white">
       <ImageBackground
         source={{
           uri: selectedPhoto,
