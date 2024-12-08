@@ -1,16 +1,28 @@
-import Product from "@/types/product";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import { router } from "expo-router";
+
+import Product from "@/types/product";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  function navigateTo() {
+    return router.push({
+      pathname: "/(product)/[product]",
+      params: {
+        product: JSON.stringify(product),
+      },
+    });
+  }
+
   return (
     <TouchableOpacity
       id="product-card"
       activeOpacity={0.7}
-      className="ml-6 gap-2 bg-zinc-50 p-4 rounded-lg border border-zinc-200"
+      className="w-[160] items-center justify-center ml-6 gap-2 bg-zinc-50 p-4 rounded-lg border border-zinc-200"
+      onPress={navigateTo}
     >
       <Image
         source={{

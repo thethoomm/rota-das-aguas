@@ -129,7 +129,7 @@ export default function ProducerDetails() {
             className="gap-2 mb-4"
           >
             {products.map((product) => (
-              <ProductCard key={producer.id} product={product} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </ScrollView>
         </View>

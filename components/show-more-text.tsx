@@ -25,7 +25,7 @@ export function ShowMoreText({
           const { lines } = e.nativeEvent;
           setShowToggle(lines.length > numberOfLines);
         }}
-        className={`${className} text-base`}
+        className={`${className} text-base text-justify`}
       >
         {text}
       </Text>
