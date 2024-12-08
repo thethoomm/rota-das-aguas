@@ -37,7 +37,11 @@ export default function CityDetails() {
   }
 
   return (
-    <View id="container" className="relative">
+    <ScrollView
+      id="container"
+      className="flex-1"
+      showsVerticalScrollIndicator={false}
+    >
       <ImageBackground
         source={{
           uri: city.image,
@@ -53,7 +57,7 @@ export default function CityDetails() {
         </TouchableOpacity>
       </ImageBackground>
 
-      <View id="content" className="bg-white h-full top-[280] rounded-t-3xl">
+      <View id="content" className="bg-white flex-1 mt-[280] rounded-t-3xl">
         <View
           id="header"
           className="p-6 pb-0 mb-4 flex-row justify-between items-center"
@@ -71,7 +75,7 @@ export default function CityDetails() {
 
         <View id="description" className="px-6 mb-4">
           <Text className="text-xl font-semibold">Sobre {city.name}</Text>
-          <ShowMoreText text={city.description} className="text-gray-500"/>
+          <ShowMoreText text={city.description} className="text-gray-500" />
         </View>
 
         <Separator />
@@ -87,7 +91,8 @@ export default function CityDetails() {
             id="producers"
             horizontal
             showsHorizontalScrollIndicator={false}
-            className="gap-2"
+            className="gap-2 px-6"
+            contentContainerStyle={{ gap: 8 }}
           >
             {producers.map((producer) => (
               <ProducerCard key={producer.id} producer={producer} />
@@ -95,6 +100,6 @@ export default function CityDetails() {
           </ScrollView>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
