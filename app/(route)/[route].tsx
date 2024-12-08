@@ -46,10 +46,11 @@ export default function RouteDetails() {
       <View id="top-actions" className="mb-4">
         <TouchableOpacity
           activeOpacity={0.7}
-          className="py-4 w-[52px] rounded-full items-center justify-center"
+          className="py-4 w-[110px] flex-row rounded-full items-center justify-start"
           onPress={backTo}
         >
           <Feather name="chevron-left" size={24} />
+          <Text className="text-base font-semibold text-black">Voltar</Text>
         </TouchableOpacity>
       </View>
 
@@ -93,7 +94,7 @@ export default function RouteDetails() {
           </View>
           <View id="bottom-image" className="flex-row justify-between w-[200]">
             <View id="route-info" className="items-start gap-2 w-full">
-              <Text className="text-lg text-white">Tamanho do trajeto:</Text>
+              <Text className="text-lg text-white md:w-[280]">Tamanho do trajeto:</Text>
               <View
                 id="distance-container"
                 className="flex-row items-baseline w-[120]"
@@ -113,7 +114,7 @@ export default function RouteDetails() {
           className="p-6 bg-black rounded-lg w-5/6"
           onPress={openMap}
         >
-          <Text className="text-white text-lg text-center">Seguir</Text>
+          <Text className="text-white text-lg text-center">Ir agora</Text>
         </TouchableOpacity>
         <TouchableOpacity
           id="share"

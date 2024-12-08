@@ -59,6 +59,11 @@ export default function ProductDetails() {
               {product.type}
             </Text>
             <Text className="text-2xl font-semibold">{product.name}</Text>
+            <Text
+              className="text-base text-gray-500 font-semibold"
+            >
+              Produzido por: {product.producer}
+            </Text>
           </View>
 
           {product.photos.length > 1 && (
@@ -105,8 +110,11 @@ export default function ProductDetails() {
           </View>
           <View id="specifications-list" className="px-6">
             {product.specifications.map((specification, index) => (
-              <Text key={index} className="text-base font-semibold">
-                {specification}
+              <Text
+                key={index}
+                className="text-base text-gray-500 font-semibold"
+              >
+                {specification.trim()}
               </Text>
             ))}
           </View>

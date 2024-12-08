@@ -20,7 +20,7 @@ export function CityCard({ city }: CityCardProps) {
   return (
     <TouchableOpacity
       id="city-card"
-      className="w-48 items-center justify-center gap-2 ml-6"
+      className="min-w-48 items-center justify-center gap-2 ml-6"
       activeOpacity={0.7}
       onPress={navigateTo}
     >

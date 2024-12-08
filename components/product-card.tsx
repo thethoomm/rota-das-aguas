@@ -21,7 +21,7 @@ export function ProductCard({ product }: ProductCardProps) {
     <TouchableOpacity
       id="product-card"
       activeOpacity={0.7}
-      className="w-[160] items-center justify-center ml-6 gap-2 bg-zinc-50 p-4 rounded-lg border border-zinc-200"
+      className="w-[160] md:w-[240] items-center justify-center ml-6 gap-2 bg-[#fff] p-4 rounded-lg border border-zinc-200"
       onPress={navigateTo}
     >
       <Image
@@ -30,11 +30,11 @@ export function ProductCard({ product }: ProductCardProps) {
         }}
         className="size-32 rounded-lg"
       />
-      <View id="product-text">
+      <View id="product-text" className="justify-start">
         <Text className="text-gray-500 font-semibold uppercase text-xs">
           {product.type}
         </Text>
-        <Text className="font-semibold">{product.name}</Text>
+        <Text className="font-semibold h-12 md:h-16">{product.name}</Text>
       </View>
     </TouchableOpacity>
   );

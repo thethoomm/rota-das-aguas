@@ -75,10 +75,10 @@ export default function ProducerDetails() {
             id="header-text"
             className="flex-row justify-between items-center"
           >
-            <Text className="text-2xl font-semibold w-[200px]">
+            <Text className="text-2xl font-semibold w-[200] md:w-[400]">
               {producer.name}
             </Text>
-            <View id="rating" className="flex-row w-[80px] items-center gap-2">
+            <View id="rating" className="flex-row w-[80] md:w-[100] items-center gap-2">
               <FontAwesome name="star" size={16} color="#f59e0b" />
               <Text className="text-base text-gray-500">
                 {producer.rating.average} ({producer.rating.total})
