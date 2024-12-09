@@ -10,7 +10,7 @@ interface CityCardProps {
 export function CityCard({ city }: CityCardProps) {
   function navigateTo() {
     return router.push({
-      pathname: "/(city)/[city]",
+      pathname: "/(app)/city/[city]",
       params: {
         city: JSON.stringify(city),
       },

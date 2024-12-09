@@ -9,7 +9,7 @@ interface ProducerCardProps {
 export function ProducerCard({ producer }: ProducerCardProps) {
   function navigateTo() {
     return router.push({
-      pathname: "/(producer)/[producer]",
+      pathname: "/(app)/producer/[producer]",
       params: {
         producer: JSON.stringify(producer),
       },

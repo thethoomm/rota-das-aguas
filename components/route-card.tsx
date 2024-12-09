@@ -11,7 +11,7 @@ interface RouteCardProps {
 export function RouteCard({ route }: RouteCardProps) {
   function navigateTo() {
     return router.push({
-      pathname: "/(route)/[route]",
+      pathname: "/(app)/route/[route]",
       params: {
         route: JSON.stringify(route),
       },

@@ -10,7 +10,7 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   function navigateTo() {
     return router.push({
-      pathname: "/(product)/[product]",
+      pathname: "/(app)/product/[product]",
       params: {
         product: JSON.stringify(product),
       },

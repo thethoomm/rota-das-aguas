@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 
-import { user } from "@/utils/mock/user";
-
 import { CityCard } from "@/components/city-card";
 import { ProductCard } from "@/components/product-card";
 import { getAllCities } from "@/server/city";
@@ -14,6 +12,7 @@ import { getAllProducers } from "@/server/producer";
 import { ProducerCard } from "@/components/producer-card";
 
 import rotaIcon from "@/assets/images/icon.png";
+import { Avatar } from "@/components/avatar";
 
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);
@@ -43,13 +42,7 @@ export default function Home() {
           <Image source={rotaIcon} className="size-16 bg-[#fff] rounded-full" />
           <Text className="text-xl font-semibold">Rota das Águas</Text>
         </View>
-        <Image
-          id="avatar"
-          source={{
-            uri: user.photo,
-          }}
-          className="rounded-full size-12"
-        />
+        <Avatar />
       </View>
 
       <View id="initial" className="gap-4 mt-6">
