@@ -8,9 +8,9 @@ import {
   View,
 } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
+import { Feather } from "@expo/vector-icons";
 
 import Product from "@/types/product";
-import { Feather } from "@expo/vector-icons";
 import { Separator } from "@/components/separator";
 import { ShowMoreText } from "@/components/show-more-text";
 

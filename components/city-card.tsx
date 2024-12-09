@@ -2,8 +2,8 @@ import { Image, Text, TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 import analytics from "@react-native-firebase/analytics";
 
-import City from "@/types/city";
 import { useSession } from "@/contexts/useSession";
+import City from "@/types/city";
 
 interface CityCardProps {
   city: City;

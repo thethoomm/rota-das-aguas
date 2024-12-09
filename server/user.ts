@@ -1,5 +1,6 @@
-import Session from "@/types/session";
 import firestore from "@react-native-firebase/firestore";
+
+import Session from "@/types/session";
 
 const UserCollection = firestore().collection("Users");
 

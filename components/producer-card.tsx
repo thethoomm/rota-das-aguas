@@ -1,7 +1,8 @@
-import Producer from "@/types/producer";
-import { router } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import { router } from "expo-router";
 import analytics from '@react-native-firebase/analytics';
+
+import Producer from "@/types/producer";
 import { useSession } from "@/contexts/useSession";
 
 

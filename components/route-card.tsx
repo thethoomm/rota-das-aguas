@@ -1,10 +1,11 @@
+import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
+import { router } from "expo-router";
+import analytics from '@react-native-firebase/analytics';
+import { Fontisto, Octicons } from "@expo/vector-icons";
+
 import { useSession } from "@/contexts/useSession";
 import colors from "@/styles/colors";
 import Route from "@/types/route";
-import { Fontisto, Octicons } from "@expo/vector-icons";
-import { router } from "expo-router";
-import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
-import analytics from '@react-native-firebase/analytics';
 
 
 interface RouteCardProps {

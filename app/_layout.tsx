@@ -1,9 +1,11 @@
-import { Stack } from "expo-router/stack";
-import "../styles/global.css";
-import { SessionProvider } from "@/contexts/useSession";
 import { useEffect } from "react";
 import { usePathname } from "expo-router";
+import { Stack } from "expo-router/stack";
 import analytics from '@react-native-firebase/analytics';
+
+import { SessionProvider } from "@/contexts/useSession";
+
+import "../styles/global.css";
 
 export default function RootLayout() {
 

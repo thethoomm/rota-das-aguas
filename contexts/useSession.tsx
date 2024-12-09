@@ -1,10 +1,11 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
-import Session from "@/types/session";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { createUser } from "@/server/user";
 import auth from "@react-native-firebase/auth";
 import analytics from '@react-native-firebase/analytics';
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { createUser } from "@/server/user";
+import Session from "@/types/session";
 
 interface AuthContextConfig {
   login: () => Promise<void>;

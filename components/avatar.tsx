@@ -1,6 +1,7 @@
+import { Image, TouchableOpacity } from "react-native";
+
 import { useSession } from "@/contexts/useSession";
 import { defaultUser } from "@/utils/default-user";
-import { Image, TouchableOpacity } from "react-native";
 
 type AvatarProps = {
   className?: string;

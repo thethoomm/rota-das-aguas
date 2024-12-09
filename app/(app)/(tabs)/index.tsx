@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
+import { router } from "expo-router";
 
 import { CityCard } from "@/components/city-card";
 import { ProductCard } from "@/components/product-card";
+import { ProducerCard } from "@/components/producer-card";
+import { Avatar } from "@/components/avatar";
+import { getAllProducers } from "@/server/producer";
 import { getAllCities } from "@/server/city";
 import { getAllProducts } from "@/server/product";
 import City from "@/types/city";
 import Product from "@/types/product";
 import Producer from "@/types/producer";
-import { getAllProducers } from "@/server/producer";
-import { ProducerCard } from "@/components/producer-card";
 
 import rotaIcon from "@/assets/images/icon.png";
-import { Avatar } from "@/components/avatar";
-import { router } from "expo-router";
 
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);

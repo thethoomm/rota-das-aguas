@@ -1,6 +1,7 @@
+import firestore from "@react-native-firebase/firestore";
+
 import City from "@/types/city";
 import Producer from "@/types/producer";
-import firestore from "@react-native-firebase/firestore";
 
 const CityCollection = firestore().collection("Cities");
 const ProducerCollection = firestore().collection("Producers");

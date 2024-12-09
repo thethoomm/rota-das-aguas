@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Image,
   ImageBackground,
@@ -9,16 +10,17 @@ import {
 } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Feather, FontAwesome } from "@expo/vector-icons";
+
 import { Separator } from "@/components/separator";
 import { ShowMoreText } from "@/components/show-more-text";
-import colors from "@/styles/colors";
-import Producer from "@/types/producer";
 import { AdditionalCard } from "@/components/additional-card";
-import AdditionalInfo from "@/types/additional-info";
-import { useEffect, useState } from "react";
-import Product from "@/types/product";
-import { getProducerProducts } from "@/server/producer";
 import { ProductCard } from "@/components/product-card";
+import { getProducerProducts } from "@/server/producer";
+import Producer from "@/types/producer";
+import AdditionalInfo from "@/types/additional-info";
+import Product from "@/types/product";
+
+import colors from "@/styles/colors";
 
 export default function ProducerDetails() {
   const [products, setProducts] = useState<Product[]>([]);

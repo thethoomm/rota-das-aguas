@@ -3,8 +3,8 @@ import { router } from "expo-router";
 import analytics from '@react-native-firebase/analytics';
 
 
-import Product from "@/types/product";
 import { useSession } from "@/contexts/useSession";
+import Product from "@/types/product";
 
 interface ProductCardProps {
   product: Product;

@@ -1,6 +1,7 @@
+import firestore from "@react-native-firebase/firestore";
+
 import Producer from "@/types/producer";
 import Product from "@/types/product";
-import firestore from "@react-native-firebase/firestore";
 
 const ProducerCollection = firestore().collection("Producers");
 const ProductCollection = firestore().collection("Products");

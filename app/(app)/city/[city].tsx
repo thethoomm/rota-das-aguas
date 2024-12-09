@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { router, useLocalSearchParams } from "expo-router";
 import {
   ImageBackground,
   ScrollView,
@@ -7,15 +6,15 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { router, useLocalSearchParams } from "expo-router";
 
-import { getCityProducers } from "@/server/city";
-
-import City from "@/types/city";
-import Producer from "@/types/producer";
 import { Feather, FontAwesome } from "@expo/vector-icons";
+import { getCityProducers } from "@/server/city";
 import { ProducerCard } from "@/components/producer-card";
 import { Separator } from "@/components/separator";
 import { ShowMoreText } from "@/components/show-more-text";
+import City from "@/types/city";
+import Producer from "@/types/producer";
 
 export default function CityDetails() {
   const [producers, setProducers] = useState<Producer[]>([]);

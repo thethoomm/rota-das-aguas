@@ -1,5 +1,6 @@
-import Route from "@/types/route";
 import firestore from "@react-native-firebase/firestore";
+
+import Route from "@/types/route";
 
 const RouteCollection = firestore().collection("Routes");
 

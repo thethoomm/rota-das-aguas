@@ -1,10 +1,12 @@
+import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { router } from "expo-router";
+import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
+
 import { Avatar } from "@/components/avatar";
 import { useSession } from "@/contexts/useSession";
-import colors from "@/styles/colors";
 import { defaultUser } from "@/utils/default-user";
-import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
-import { router } from "expo-router";
-import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
+
+import colors from "@/styles/colors";
 
 export default function Profile() {
   const { session, login, logout } = useSession();

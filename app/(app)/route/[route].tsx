@@ -1,8 +1,3 @@
-import { useSession } from "@/contexts/useSession";
-import colors from "@/styles/colors";
-import Route from "@/types/route";
-import { Feather, Fontisto } from "@expo/vector-icons";
-import { router, useLocalSearchParams } from "expo-router";
 import {
   Image,
   ImageBackground,
@@ -12,7 +7,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { router, useLocalSearchParams } from "expo-router";
+import { Feather, Fontisto } from "@expo/vector-icons";
 import analytics from "@react-native-firebase/analytics";
+
+import { useSession } from "@/contexts/useSession";
+import Route from "@/types/route";
+
+import colors from "@/styles/colors";
 
 export default function RouteDetails() {
   const { route: rawRoute } = useLocalSearchParams();

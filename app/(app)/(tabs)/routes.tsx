@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
+import { ScrollView, Text, View } from "react-native";
+
 import { RouteCard } from "@/components/route-card";
 import { getAllRoutes } from "@/server/route";
 import Route from "@/types/route";
-import { useEffect, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
 
 export default function Routes() {
   const [routes, setRoutes] = useState<Route[]>([]);
