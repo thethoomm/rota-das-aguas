@@ -3,6 +3,7 @@ import Session from "@/types/session";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import auth from "@react-native-firebase/auth";
+import { createUser } from "@/server/user";
 
 interface AuthContextConfig {
   login: () => Promise<void>;
@@ -71,6 +72,18 @@ export function SessionProvider({ children }: PropsWithChildren) {
       );
 
       const user = userCredential.user;
+
+      const userCreated = await createUser({
+        id: user.uid,
+        name: user.displayName || "Usuário",
+        email: user.email || "",
+        photo: user.photoURL || "",
+        isGuest: false,
+      });
+
+      if (!userCreated) {
+        console.log("Usuário já existe no Firestore.");
+      }
 
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(user));
 

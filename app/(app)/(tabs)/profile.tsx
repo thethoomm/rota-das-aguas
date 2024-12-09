@@ -6,7 +6,6 @@ import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 export default function Profile() {
-
   const { session, login, logout } = useSession();
 
   const user = session || defaultUser;
@@ -14,31 +13,25 @@ export default function Profile() {
   const items: {
     icon: keyof typeof MaterialIcons.glyphMap;
     label: string;
-    href: string;
   }[] = [
     {
       icon: "history",
       label: "Histórico de Rotas",
-      href: "/(app)/route/history",
     },
   ];
 
   const handleLogout = () => {
-    Alert.alert(
-      "Sair",
-      "Tem certeza que deseja sair?",
-      [
-        {
-          text: "Cancelar",
-          style: "cancel"
-        },
-        {
-          text: "Sim",
-          onPress: logout,
-          style: "destructive"
-        }
-      ]
-    );
+    Alert.alert("Sair", "Tem certeza que deseja sair?", [
+      {
+        text: "Cancelar",
+        style: "cancel",
+      },
+      {
+        text: "Sim",
+        onPress: logout,
+        style: "destructive",
+      },
+    ]);
   };
 
   return (
@@ -92,7 +85,7 @@ export default function Profile() {
               onPress={handleLogout}
               className="flex-row border border-rose-500 rounded-lg p-4 items-center gap-2"
             >
-              <MaterialIcons name="exit-to-app" size={24} color='#f43f5e'/>
+              <MaterialIcons name="exit-to-app" size={24} color="#f43f5e" />
               <Text className="text-rose-500 text-lg font-semibold">Sair</Text>
             </TouchableOpacity>
           </ScrollView>
