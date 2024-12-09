@@ -4,15 +4,16 @@ import { Image, TouchableOpacity } from "react-native";
 
 type AvatarProps = {
   className?: string;
+  onPress?: () => void
 };
 
-export function Avatar({ className = "size-12" }: AvatarProps) {
+export function Avatar({ className = "size-12", onPress }: AvatarProps) {
   const { session } = useSession();
 
   const user = session || defaultUser;
 
   return (
-    <TouchableOpacity activeOpacity={0.7}>
+    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <Image
         source={{
           uri: user.photo,

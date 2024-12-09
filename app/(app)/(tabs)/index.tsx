@@ -13,6 +13,7 @@ import { ProducerCard } from "@/components/producer-card";
 
 import rotaIcon from "@/assets/images/icon.png";
 import { Avatar } from "@/components/avatar";
+import { router } from "expo-router";
 
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);
@@ -28,6 +29,10 @@ export default function Home() {
     getAllProducers().then((data) => setProducers(data));
   }, []);
 
+  function openProfile() {
+    return router.push('/profile')
+  }
+
   return (
     <ScrollView
       id="container"
@@ -42,7 +47,7 @@ export default function Home() {
           <Image source={rotaIcon} className="size-16 bg-[#fff] rounded-full" />
           <Text className="text-xl font-semibold">Rota das Águas</Text>
         </View>
-        <Avatar />
+        <Avatar onPress={openProfile}/>
       </View>
 
       <View id="initial" className="gap-4 mt-6">
@@ -112,9 +117,9 @@ export default function Home() {
 
       <View id="producers" className="gap-4 mt-6">
         <View id="producers-text" className="px-6">
-          <Text className="font-semibold text-xl">Conheça os produtores</Text>
+          <Text className="font-semibold text-xl">Conheça os Produtores do Circuito!</Text>
           <Text className="text-base text-gray-500">
-            Aventure-se em novos sabores a cada gole.
+          Explore as histórias e tradições por trás de cada produto.
           </Text>
         </View>
         <ScrollView

@@ -82,8 +82,8 @@ export default function RouteDetails() {
           source={{
             uri: route.image,
           }}
-          imageClassName="rounded-xl"
-          className="flex-1 rounded-xl p-4 justify-between"
+          imageClassName="rounded-xl opacity-50"
+          className="flex-1 rounded-xl p-4 justify-between bg-black"
         >
           <View
             id="city"

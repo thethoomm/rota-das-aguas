@@ -32,7 +32,11 @@ export function ShowMoreText({
 
       {showToggle && (
         <TouchableOpacity onPress={toggleText}>
-          <Text className="text-base font-semibold text-black mt-1">
+          <Text
+            className={`text-base font-semibold text-black ${
+              isExpanded ? "-mt-5" : "mt-0"
+            }`}
+          >
             {isExpanded ? "Ver menos" : "Ver mais"}
           </Text>
         </TouchableOpacity>

@@ -32,7 +32,7 @@ export function ProducerCard({ producer }: ProducerCardProps) {
       <View id="content">
         <Text
           id="categories"
-          className="uppercase text-sm text-gray-500 font-semibold"
+          className="uppercase text-sm text-gray-500 font-semibold -mb-1"
         >
           {producer.categories.map((category, index) => {
             if (index !== producer.categories.length - 1) {

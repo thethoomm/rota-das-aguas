@@ -21,14 +21,14 @@ export function ProductCard({ product }: ProductCardProps) {
     <TouchableOpacity
       id="product-card"
       activeOpacity={0.7}
-      className="w-[160] md:w-[240] items-center justify-center ml-6 gap-2 bg-[#fff] p-4 rounded-lg border border-zinc-200"
+      className="w-[160] md:w-[240] items-start justify-center ml-6 gap-2 bg-[#fff] p-4 rounded-lg border border-zinc-200"
       onPress={navigateTo}
     >
       <Image
         source={{
           uri: product.photos[0],
         }}
-        className="size-32 rounded-lg"
+        className="w-full h-32 rounded-lg"
       />
       <View id="product-text" className="justify-start">
         <Text className="text-gray-500 font-semibold uppercase text-xs">

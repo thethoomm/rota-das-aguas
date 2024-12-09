@@ -39,7 +39,7 @@ export default function CityDetails() {
   return (
     <ScrollView
       id="container"
-      className="flex-1"
+      className="flex-1 bg-white"
       showsVerticalScrollIndicator={false}
     >
       <ImageBackground
