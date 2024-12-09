@@ -2,8 +2,9 @@ import { createContext, PropsWithChildren, useContext, useEffect, useState } fro
 import Session from "@/types/session";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import auth from "@react-native-firebase/auth";
 import { createUser } from "@/server/user";
+import auth from "@react-native-firebase/auth";
+import analytics from '@react-native-firebase/analytics';
 
 interface AuthContextConfig {
   login: () => Promise<void>;
@@ -86,6 +87,10 @@ export function SessionProvider({ children }: PropsWithChildren) {
       }
 
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+
+      await analytics().logLogin({
+        method: 'Google'
+      })
 
       setSession({
         id: user.uid,

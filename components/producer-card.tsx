@@ -1,13 +1,28 @@
 import Producer from "@/types/producer";
 import { router } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import analytics from '@react-native-firebase/analytics';
+import { useSession } from "@/contexts/useSession";
+
 
 interface ProducerCardProps {
   producer: Producer;
 }
 
 export function ProducerCard({ producer }: ProducerCardProps) {
-  function navigateTo() {
+  const { session: user } = useSession();
+
+  async function navigateTo() {
+    await analytics().logEvent("open_producer", {
+      item: JSON.stringify(producer),
+      user: user?.isGuest
+        ? "guest"
+        : JSON.stringify({
+            id: user?.id,
+            name: user?.name,
+          }),
+    });
+
     return router.push({
       pathname: "/(app)/producer/[producer]",
       params: {

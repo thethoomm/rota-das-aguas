@@ -1,3 +1,4 @@
+import { useSession } from "@/contexts/useSession";
 import colors from "@/styles/colors";
 import Route from "@/types/route";
 import { Feather, Fontisto } from "@expo/vector-icons";
@@ -11,9 +12,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import analytics from "@react-native-firebase/analytics";
 
 export default function RouteDetails() {
   const { route: rawRoute } = useLocalSearchParams();
+  const { session: user } = useSession();
 
   const route = rawRoute ? (JSON.parse(rawRoute as string) as Route) : null;
 
@@ -21,7 +24,17 @@ export default function RouteDetails() {
     return router.back();
   }
 
-  function openMap() {
+  async function openMap() {
+    await analytics().logEvent("do_route", {
+      item: JSON.stringify(route),
+      user: user?.isGuest
+        ? "guest"
+        : JSON.stringify({
+            id: user?.id,
+            name: user?.name,
+          }),
+    });
+
     Linking.openURL(route?.link as string).catch((err) =>
       console.error("Erro ao abrir o Google Maps", err)
     );
@@ -94,7 +107,9 @@ export default function RouteDetails() {
           </View>
           <View id="bottom-image" className="flex-row justify-between w-[200]">
             <View id="route-info" className="items-start gap-2 w-full">
-              <Text className="text-lg text-white md:w-[280]">Tamanho do trajeto:</Text>
+              <Text className="text-lg text-white md:w-[280]">
+                Tamanho do trajeto:
+              </Text>
               <View
                 id="distance-container"
                 className="flex-row items-baseline w-[120]"

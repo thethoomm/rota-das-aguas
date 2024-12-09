@@ -1,14 +1,28 @@
 import { Image, Text, TouchableOpacity } from "react-native";
 import { router } from "expo-router";
+import analytics from "@react-native-firebase/analytics";
 
 import City from "@/types/city";
+import { useSession } from "@/contexts/useSession";
 
 interface CityCardProps {
   city: City;
 }
 
 export function CityCard({ city }: CityCardProps) {
-  function navigateTo() {
+  const { session: user } = useSession();
+
+  async function navigateTo() {
+    await analytics().logEvent("open_city", {
+      item: JSON.stringify(city),
+      user: user?.isGuest
+        ? "guest"
+        : JSON.stringify({
+            id: user?.id,
+            name: user?.name,
+          }),
+    });
+
     return router.push({
       pathname: "/(app)/city/[city]",
       params: {

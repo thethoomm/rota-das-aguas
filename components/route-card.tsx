@@ -1,15 +1,30 @@
+import { useSession } from "@/contexts/useSession";
 import colors from "@/styles/colors";
 import Route from "@/types/route";
 import { Fontisto, Octicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
+import analytics from '@react-native-firebase/analytics';
+
 
 interface RouteCardProps {
   route: Route;
 }
 
 export function RouteCard({ route }: RouteCardProps) {
-  function navigateTo() {
+  const { session: user } = useSession();
+
+  async function navigateTo() {
+    await analytics().logEvent("open_route", {
+      item: JSON.stringify(route),
+      user: user?.isGuest
+        ? "guest"
+        : JSON.stringify({
+            id: user?.id,
+            name: user?.name,
+          }),
+    });
+
     return router.push({
       pathname: "/(app)/route/[route]",
       params: {
