@@ -1,17 +1,21 @@
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
 import Session from "@/types/session";
-import { createContext, PropsWithChildren, useContext } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import auth from "@react-native-firebase/auth";
 
 interface AuthContextConfig {
-  login: () => void;
-  logout: () => void;
+  login: () => Promise<void>;
+  logout: () => Promise<void>;
   session: Session | null;
 }
 
-const AuthContext = createContext<AuthContextConfig>({
-  login: () => null,
-  logout: () => null,
-  session: null,
+GoogleSignin.configure({
+  webClientId:
+    "571405384198-6c0notgfeohctvbptdsggeibs1pqkno6.apps.googleusercontent.com",
 });
+
+const AuthContext = createContext<AuthContextConfig | undefined>(undefined);
 
 export function useSession() {
   const value = useContext(AuthContext);
@@ -26,14 +30,77 @@ export function useSession() {
 }
 
 export function SessionProvider({ children }: PropsWithChildren) {
+  const [session, setSession] = useState<Session | null>(null);
+
+  const STORAGE_KEY = "@session";
+
+  useEffect(() => {
+    const loadSession = async () => {
+      const storedSession = await AsyncStorage.getItem(STORAGE_KEY);
+      if (storedSession) {
+        const user = JSON.parse(storedSession)
+
+        setSession({
+          id: user.uid,
+          name: user.displayName || "Usuário",
+          email: user.email || "",
+          photo: user.photoURL || "",
+          isGuest: false,
+        });
+      }
+    };
+    loadSession();
+  }, []);
+
+  const login = async () => {
+    try {
+      await GoogleSignin.hasPlayServices({
+        showPlayServicesUpdateDialog: true,
+      });
+
+      const result = await GoogleSignin.signIn();
+      const idToken = result.data?.idToken;
+
+      if (!idToken) {
+        throw new Error("Google authentication failed - no ID token present");
+      }
+
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      const userCredential = await auth().signInWithCredential(
+        googleCredential
+      );
+
+      const user = userCredential.user;
+
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+
+      setSession({
+        id: user.uid,
+        name: user.displayName || "Usuário",
+        email: user.email || "",
+        photo: user.photoURL || "",
+        isGuest: false,
+      });
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
+
+  const logout = async () => {
+    try {
+      await GoogleSignin.signOut();
+      await auth().signOut();
+
+      await AsyncStorage.removeItem(STORAGE_KEY);
+
+      setSession(null);
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
+
   return (
-    <AuthContext.Provider
-      value={{
-        login: () => null,
-        logout: () => null,
-        session: null,
-      }}
-    >
+    <AuthContext.Provider value={{ login, logout, session }}>
       {children}
     </AuthContext.Provider>
   );

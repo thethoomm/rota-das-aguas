@@ -1,3 +1,4 @@
+import { useSession } from "@/contexts/useSession";
 import { defaultUser } from "@/utils/default-user";
 import { Image, TouchableOpacity } from "react-native";
 
@@ -6,7 +7,9 @@ type AvatarProps = {
 };
 
 export function Avatar({ className = "size-12" }: AvatarProps) {
-  const user = defaultUser;
+  const { session } = useSession();
+
+  const user = session || defaultUser;
 
   return (
     <TouchableOpacity activeOpacity={0.7}>
