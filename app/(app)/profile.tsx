@@ -2,7 +2,8 @@ import { Avatar } from "@/components/avatar";
 import { useSession } from "@/contexts/useSession";
 import colors from "@/styles/colors";
 import { defaultUser } from "@/utils/default-user";
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 export default function Profile() {
@@ -20,6 +21,11 @@ export default function Profile() {
     },
   ];
 
+  function backTo() {
+    return router.back();
+  }
+
+
   const handleLogout = () => {
     Alert.alert("Sair", "Tem certeza que deseja sair?", [
       {
@@ -36,6 +42,17 @@ export default function Profile() {
 
   return (
     <View id="container" className="flex-1 bg-white py-12">
+      <View id="top-actions" className="px-12 mb-4">
+        <TouchableOpacity
+          activeOpacity={0.7}
+          className="py-4 w-[110px] flex-row rounded-full items-center justify-start"
+          onPress={backTo}
+        >
+          <Feather name="chevron-left" size={24} />
+          <Text className="text-base font-semibold text-black">Voltar</Text>
+        </TouchableOpacity>
+      </View>
+
       <View id="content" className="flex-1 items-center px-12">
         <View id="avatar" className="gap-4 mb-6 items-center">
           <Avatar className="size-40 md:size-64" />
